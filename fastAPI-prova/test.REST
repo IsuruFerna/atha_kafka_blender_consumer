@@ -1,0 +1,22 @@
+# add Item
+POST http://127.0.0.1:8000/items
+    ?item=apple
+content-type: application/json
+
+###
+# add Item
+POST http://127.0.0.1:8000/items
+content-type: application/json
+
+{
+    "text": "Apple"
+}
+
+# get item
+###
+GET http://127.0.0.1:8000/items/0
+
+# get items to a limit
+###
+GET http://127.0.0.1:8000/items
+    ?limit=3
