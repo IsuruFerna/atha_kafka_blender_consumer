@@ -156,7 +156,6 @@ while True:
             angle_middle = calculate_finger_flexion(arr_lmlist[9], arr_lmlist[10], arr_lmlist[11])
             # print("Angolo medio: ", angle_middle)
 
-
             # Angolo per l'anulare
             angle_ring = calculate_finger_flexion(arr_lmlist[13], arr_lmlist[14], arr_lmlist[15])
             # print("Angolo anulare: ", angle_ring)
