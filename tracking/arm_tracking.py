@@ -24,6 +24,7 @@ def armDetectFunction(video, quit_key):
     while True:
         # Capture each frame from the webcam
         success, img = video.read()
+        img = cv.flip(img, 1)
 
         # Check if frame was captured successfully
         if not success or img is None:
