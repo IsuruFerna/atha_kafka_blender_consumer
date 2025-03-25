@@ -19,6 +19,7 @@ def armDetectFunction(video, quit_key):
                             detectionCon=0.5,
                             trackCon=0.5)
 
+
     # Loop to continuously get frames from the webcam
     while True:
         # Capture each frame from the webcam
@@ -57,7 +58,28 @@ def armDetectFunction(video, quit_key):
                                             img=img,
                                             color=(0, 0, 255),
                                             scale=10)
-
+            
+            angle1, img = detector.findAngle(lmList[11][0:2],
+                                            lmList[12][0:2],
+                                            lmList[14][0:2],
+                                            img=img,
+                                            color=(0, 255, 0),
+                                            scale=10)
+            
+            angle2, img = detector.findAngle(lmList[12][0:2],
+                                            lmList[14][0:2],
+                                            lmList[16][0:2],
+                                            img=img,
+                                            color=(0, 255, 0),
+                                            scale=10)
+            
+            angle3, img = detector.findAngle(lmList[14][0:2],
+                                            lmList[16][0:2],
+                                            lmList[20][0:2],
+                                            img=img,
+                                            color=(0, 255, 0),
+                                            scale=10)
+            
             # Check if the angle is close to 50 degrees with an offset of 10
             isCloseAngle50 = detector.angleCheck(myAngle=angle,
                                                 targetAngle=50,
@@ -77,4 +99,4 @@ def armDetectFunction(video, quit_key):
     video.release()
     cv.destroyAllWindows()
 
-# armDetectFunction(video, 'k')
+armDetectFunction(video, 'k')

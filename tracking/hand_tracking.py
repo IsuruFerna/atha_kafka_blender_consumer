@@ -71,6 +71,8 @@ def handDetectFunction(video, quit_key):
         ret, frame = video.read()
         frame = cv.flip(frame, 1)
         hands, img = detector.findHands(frame)
+
+        
         
         if hands:
             lmlist = hands[0] # Lista dei punti di riferimento della mano
