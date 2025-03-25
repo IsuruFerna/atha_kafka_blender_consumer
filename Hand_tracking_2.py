@@ -95,6 +95,9 @@ def calculate_finger_flexion(base, joint, tip):
     cross = v1_yz[0] * v2_yz[1] - v1_yz[1] * v2_yz[0]
     if cross < 0:
         angle_deg = -angle_deg
+
+    if angle_deg < 0:
+        return angle_deg * (-1)
     
     return angle_deg
 

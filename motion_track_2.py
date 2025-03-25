@@ -3,6 +3,8 @@ sys.path.append(r"C:\Users\isuru\Desktop\atha\blender_venv\Lib\site-packages")
 
 import cv2 as cv
 from cvzone.HandTrackingModule import HandDetector
+from cvzone.PoseModule import PoseDetector
+
 import numpy as np
 import bpy
 import math
@@ -65,6 +67,7 @@ def calculate_finger_flexion(base, joint, tip):
 
 if __name__ == "__main__":
     detector = HandDetector(detectionCon=0.8, maxHands=1)
+    pose_detector = PoseDetector()
 
     video = cv.VideoCapture(0)
 
