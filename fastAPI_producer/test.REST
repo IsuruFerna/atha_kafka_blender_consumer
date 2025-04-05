@@ -1,0 +1,6 @@
+POST http://127.0.0.1:8001/streaming/
+content-type: application/json
+
+{
+    "text": "Apple"
+}
