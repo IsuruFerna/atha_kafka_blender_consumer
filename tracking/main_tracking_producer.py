@@ -129,6 +129,7 @@ pose_detector = PoseDetector(
     trackCon=0.5
 )
 
+global detected_angles
 detected_angles = {
     "hand_R": {
         "thumb": 0,
@@ -210,14 +211,14 @@ while True:
             # print("Angolo mignolo: ", angle_pinkey)
 
             # print("finger angles: ", angle_thumb, angle_index, angle_middle, angle_ring, angle_pinky)
-            
-            detected_angles["hand_R"]["thumb"] = angle_thumb
+
+            detected_angles["hand_R"]["thumb"] = angle_thumb if angle_thumb > 90 else angle_thumb * 3
             detected_angles["hand_R"]["index"] = angle_index
             detected_angles["hand_R"]["middle"] = angle_middle
             detected_angles["hand_R"]["ring"] = angle_ring
             detected_angles["hand_R"]["pinkey"] = angle_pinky
 
-            # print(f"finger rotation: [{angle_thumb}, {angle_index}, {angle_middle}, {angle_ring}, {angle_pinky}]")
+            print(f"finger rotation: [{angle_thumb}, {angle_index}, {angle_middle}, {angle_ring}, {angle_pinky}]")
             # time.sleep(1)
 
             # print(f"hand rot: {arr_lmlist[5]}, {arr_lmlist[9]}, {arr_lmlist[13]}, {arr_lmlist[17]}")
@@ -263,7 +264,7 @@ while True:
             )
         
         # FIXME: correct angles
-        print("arm rototions: ", sholder_r_angle, elbow_r_angle, wrist_r_andgle)
+        # print("arm rototions: ", sholder_r_angle, elbow_r_angle, wrist_r_andgle)
         
         detected_angles["arm_R"]["sholder"] = sholder_r_angle
         detected_angles["arm_R"]["elbow"] = elbow_r_angle
@@ -280,6 +281,15 @@ while True:
     # if k == ord('q'):
     #     break
     if cv.waitKey(1) & 0xFF == ord('q'):
+        detected_angles["hand_R"]["thumb"] = 0
+        detected_angles["hand_R"]["index"] = 0
+        detected_angles["hand_R"]["middle"] = 0
+        detected_angles["hand_R"]["ring"] = 0
+        detected_angles["hand_R"]["pinkey"] = 0
+
+        detected_angles["arm_R"]["sholder"] = 0
+        detected_angles["arm_R"]["elbow"] = 0
+        detected_angles["arm_R"]["wrist"] = 0
         break
 
 video.release()
